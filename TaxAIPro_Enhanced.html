@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaxAI Pro — AI-Powered ITR Filing for India</title>
+<meta name="description" content="File your Income Tax Return with confidence. AI-powered tax filing platform for professionals, freelancers, and businesses in India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0F172A;
+  --royal: #2563EB;
+  --emerald: #10B981;
+  --white: #FFFFFF;
+  --gray: #F8FAFC;
+  --mid: #64748B;
+  --light-blue: #EFF6FF;
+  --light-green: #ECFDF5;
+  --border: rgba(255,255,255,0.08);
+  --glass: rgba(255,255,255,0.05);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--deep);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--deep); }
+::-webkit-scrollbar-thumb { background: var(--royal); border-radius: 3px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 6%;
+  backdrop-filter: blur(20px);
+  background: rgba(15,23,42,0.85);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s;
+}
+
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--white);
+  display: flex; align-items: center; gap: 10px;
+}
+
+.logo-icon {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, var(--royal), var(--emerald));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.75);
+ text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--royal), #1d4ed8);
+  color: var(--white) !important;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600 !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.4) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 120px 6% 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 70% 50%, rgba(37,99,235,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(16,185,129,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 80% at 50% 0%, rgba(37,99,235,0.08) 0%, transparent 60%);
+}
+
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(37,99,235,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 620px;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(16,185,129,0.1);
+  border: 1px solid rgba(16,185,129,0.3);
+  color: var(--emerald);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 13px; font-weight: 600;
+  margin-bottom: 28px;
+  animation: fadeUp 0.6s both;
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(38px, 5.5vw, 68px);
+  line-height: 1.1;
+  margin-bottom: 22px;
+  animation: fadeUp 0.6s 0.1s both;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, var(--royal), var(--emerald));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 17px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  margin-bottom: 40px;
+  max-width: 520px;
+  animation: fadeUp 0.6s 0.2s both;
+}
+
+.hero-btns {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.3s both;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--royal), #1d4ed8);
+  color: var(--white);
+  padding: 15px 32px;
+  border-radius: 10px;
+  font-size: 15px; font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+  border: none; cursor: pointer;
+}
+
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,99,235,0.4); }
+
+.btn-outline {
+  border: 1.5px solid rgba(255,255,255,0.2);
+  color: var(--white);
+  padding: 15px 32px;
+  border-radius: 10px;
+  font-size: 15px; font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  backdrop-filter: blur(10px);
+  display: inline-flex; align-items: center; gap: 8px;
+  cursor: pointer; background: transparent;
+}
+
+.btn-outline:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+/* Hero visual */
+.hero-visual {
+  position: absolute; right: 4%; top: 50%; transform: translateY(-50%);
+  width: 42%; max-width: 580px;
+  animation: fadeUp 0.8s 0.4s both;
+}
+
+.dashboard-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 28px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+
+.dash-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+}
+
+.dash-avatar {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--royal), var(--emerald));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+
+.dash-title { font-weight: 700; font-size: 15px; }
+.dash-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+.dash-status {
+  margin-left: auto;
+  background: rgba(16,185,129,0.15);
+  border: 1px solid rgba(16,185,129,0.3);
+  color: var(--emerald);
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-size: 12px; font-weight: 600;
+}
+
+.dash-progress { margin-bottom: 20px; }
+.dash-progress-label { display: flex; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+.progress-bar { height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--royal), var(--emerald)); animation: fillBar 1.5s 1s ease both; }
+
+@keyframes fillBar { from { width: 0; } to { width: 78%; } }
+
+.dash-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+
+.stat-mini {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.stat-mini-num { font-size: 22px; font-weight: 800; color: var(--emerald); }
+.stat-mini-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+
+.dash-items { display: flex; flex-direction: column; gap: 10px; }
+
+.dash-item {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 13px;
+}
+
+.dash-item-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+}
+
+.dash-item-check { margin-left: auto; color: var(--emerald); font-weight: 700; }
+
+/* Floating cards */
+.float-card {
+  position: absolute;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 14px 18px;
+  backdrop-filter: blur(16px);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex; align-items: center; gap: 10px;
+  white-space: nowrap;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.float-1 { top: -20px; left: -60px; animation: float1 3s ease-in-out infinite; }
+.float-2 { bottom: 30px; left: -70px; animation: float2 3.5s ease-in-out infinite; }
+.float-3 { top: 40%; right: -50px; animation: float1 4s ease-in-out infinite; }
+
+@keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
+
+/* ── TRUST STRIP ── */
+.trust-strip {
+  padding: 32px 6%;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+}
+
+.trust-items { display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; }
+
+.trust-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; font-weight: 600;
+  color: rgba(255,255,255,0.75);
+}
+
+.trust-icon {
+  width: 36px; height: 36px;
+  background: rgba(37,99,235,0.12);
+  border: 1px solid rgba(37,99,235,0.25);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+}
+
+/* ── SECTIONS ── */
+section { padding: 90px 6%; }
+
+.section-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(37,99,235,0.1);
+  border: 1px solid rgba(37,99,235,0.25);
+  color: #60A5FA;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.55);
+  max-width: 540px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+
+/* ── WHY FILE ITR ── */
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+
+.why-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+
+.why-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--royal), var(--emerald));
+  opacity: 0; transition: opacity 0.3s;
+}
+
+.why-card:hover { background: rgba(37,99,235,0.06); border-color: rgba(37,99,235,0.25); transform: translateY(-4px); }
+.why-card:hover::before { opacity: 1; }
+
+.why-icon { font-size: 32px; margin-bottom: 14px; }
+.why-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.why-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; }
+
+/* ── ITR FORMS ── */
+.forms-bg { background: rgba(255,255,255,0.015); border-radius: 24px; padding: 60px; }
+
+.forms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+
+.form-card {
+  background: var(--deep);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 32px 28px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.form-card:hover { border-color: var(--royal); box-shadow: 0 0 0 1px var(--royal), 0 20px 40px rgba(37,99,235,0.15); transform: translateY(-4px); }
+
+.form-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--royal), #1d4ed8);
+  color: var(--white);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px; font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+.form-name { font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 500; margin-bottom: 12px; }
+.form-title { font-size: 17px; font-weight: 700; margin-bottom: 14px; }
+
+.form-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.form-list li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 13px; color: rgba(255,255,255,0.6);
+}
+.form-list li::before { content: '→'; color: var(--emerald); flex-shrink: 0; font-weight: 700; }
+
+.form-docs {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 12px; color: rgba(255,255,255,0.4);
+}
+
+/* ── AI SECTION ── */
+.ai-section {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center;
+}
+
+.ai-features { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; }
+
+.ai-feature {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.3s;
+}
+
+.ai-feature:hover { background: rgba(37,99,235,0.07); border-color: rgba(37,99,235,0.2); }
+
+.ai-feature-icon {
+  width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(37,99,235,0.2), rgba(16,185,129,0.2));
+  border: 1px solid rgba(37,99,235,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px;
+}
+
+.ai-feature-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.ai-feature-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+/* AI Visual */
+.ai-visual {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-visual::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(37,99,235,0.08) 60deg, transparent 120deg);
+  animation: rotateBg 8s linear infinite;
+}
+
+@keyframes rotateBg { to { transform: rotate(360deg); } }
+
+.ai-visual-inner { position: relative; z-index: 1; }
+
+.ai-chat { display: flex; flex-direction: column; gap: 14px; }
+
+.chat-msg {
+  display: flex; gap: 10px; align-items: flex-start;
+}
+
+.chat-msg.user { flex-direction: row-reverse; }
+
+.chat-bubble {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 13px; line-height: 1.6;
+}
+
+.chat-bubble.ai {
+  background: rgba(37,99,235,0.15);
+  border: 1px solid rgba(37,99,235,0.25);
+  border-radius: 14px 14px 14px 4px;
+}
+
+.chat-bubble.user-msg {
+  background: linear-gradient(135deg, var(--royal), #1d4ed8);
+  border-radius: 14px 14px 4px 14px;
+}
+
+.chat-avatar {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; flex-shrink: 0;
+}
+
+.ai-avatar { background: rgba(16,185,129,0.2); }
+.user-avatar { background: rgba(37,99,235,0.3); }
+
+.typing { display: flex; gap: 4px; align-items: center; padding: 8px 4px; }
+.typing span {
+  width: 6px; height: 6px;
+  background: var(--royal);
+  border-radius: 50%;
+  animation: typingAnim 1.2s infinite;
+}
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingAnim { 0%,60%,100%{opacity:0.3;transform:scale(0.8)} 30%{opacity:1;transform:scale(1)} }
+
+/* ── PROCESS ── */
+.process-section { background: rgba(255,255,255,0.015); }
+
+.process-steps {
+  display: flex; gap: 0;
+  position: relative;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.process-line {
+  position: absolute;
+  top: 32px; left: 10%; right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--royal), var(--emerald));
+  opacity: 0.3;
+}
+
+.process-step {
+  flex: 1; min-width: 160px;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+  padding: 0 16px;
+  position: relative; z-index: 1;
+}
+
+.step-circle {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(37,99,235,0.2), rgba(16,185,129,0.2));
+  border: 2px solid rgba(37,99,235,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 16px;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.step-circle::after {
+  content: attr(data-num);
+  position: absolute;
+  top: -8px; right: -8px;
+  width: 22px; height: 22px;
+  background: var(--royal);
+  border-radius: 50%;
+  font-size: 11px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.process-step:hover .step-circle { border-color: var(--emerald); transform: scale(1.1); }
+
+.step-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.step-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+/* ── TESTIMONIALS ── */
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+.testimonial-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px;
+  padding: 28px;
+  transition: all 0.3s;
+}
+
+.testimonial-card:hover { background: rgba(255,255,255,0.05); transform: translateY(-3px); }
+
+.t-stars { color: #FBBF24; font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+.t-text { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+
+.t-author { display: flex; align-items: center; gap: 12px; }
+
+.t-avatar {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--royal), var(--emerald));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 800;
+  flex-shrink: 0;
+}
+
+.t-name { font-size: 14px; font-weight: 700; }
+.t-role { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+
+/* ── FAQ ── */
+.faq-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+
+.faq-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.faq-item.open { border-color: rgba(37,99,235,0.3); }
+
+.faq-q {
+  padding: 20px 24px;
+  font-size: 15px; font-weight: 600;
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.faq-q:hover { background: rgba(37,99,235,0.05); }
+
+.faq-icon {
+  width: 28px; height: 28px;
+  background: rgba(37,99,235,0.15);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: var(--royal);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+
+.faq-a {
+  padding: 0 24px;
+  max-height: 0; overflow: hidden;
+  font-size: 14px; color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+  transition: all 0.4s ease;
+}
+
+.faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+
+/* ── CONTACT ── */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+
+.contact-card {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  text-decoration: none; color: var(--white);
+  transition: all 0.3s;
+}
+
+.contact-card:hover { background: rgba(37,99,235,0.08); border-color: rgba(37,99,235,0.3); transform: translateX(4px); }
+
+.contact-card-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: linear-gradient(135deg, rgba(37,99,235,0.2), rgba(16,185,129,0.2));
+  border: 1px solid rgba(37,99,235,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+
+.contact-card-label { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+.contact-card-value { font-size: 15px; font-weight: 600; }
+
+/* Form */
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+.form-group { display: flex; flex-direction: column; gap: 7px; }
+.form-group label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); }
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
+  padding: 13px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'Sora', sans-serif;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--royal); }
+
+.form-group select option { background: var(--deep); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* ── BENEFITS ── */
+.benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+.benefit-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.benefit-card:hover { background: rgba(16,185,129,0.06); border-color: rgba(16,185,129,0.2); transform: translateY(-4px); }
+
+.benefit-icon { font-size: 34px; margin-bottom: 12px; }
+.benefit-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.benefit-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 60px 6% 30px;
+  background: rgba(0,0,0,0.2);
+}
+
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+
+.footer-brand p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-top: 14px; max-width: 300px; }
+
+.footer-col h4 { font-size: 14px; font-weight: 700; margin-bottom: 18px; color: rgba(255,255,255,0.85); }
+
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+}
+
+.footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.35); }
+
+.social-links { display: flex; gap: 12px; }
+.social-link {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  text-decoration: none; color: var(--white);
+  transition: all 0.2s;
+}
+.social-link:hover { background: var(--royal); border-color: var(--royal); }
+
+/* ── WHATSAPP FLOAT ── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 99;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: waPulse 2s infinite;
+  text-decoration: none;
+}
+
+.wa-float:hover { transform: scale(1.1); box-shadow: 0 10px 30px rgba(37,211,102,0.5); }
+
+@keyframes waPulse {
+  0%,100% { box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 6px 30px rgba(37,211,102,0.7), 0 0 0 8px rgba(37,211,102,0.1); }
+}
+
+/* ── TAX CALCULATOR ── */
+.calc-section { background: rgba(37,99,235,0.04); border-radius: 24px; padding: 60px; margin: 0 6%; }
+
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+
+.calc-inputs { display: flex; flex-direction: column; gap: 20px; }
+
+.calc-slider-group { display: flex; flex-direction: column; gap: 10px; }
+.calc-slider-label { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; }
+.calc-slider-value { color: var(--emerald); }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%; height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px; outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--royal), var(--emerald));
+  box-shadow: 0 2px 8px rgba(37,99,235,0.4);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+.calc-result {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.calc-result-title { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+.calc-result-num { font-family: 'DM Serif Display', serif; font-size: 42px; color: var(--emerald); margin-bottom: 20px; }
+
+.calc-breakdown { display: flex; flex-direction: column; gap: 12px; }
+
+.calc-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.calc-row:last-child { border-bottom: none; }
+.calc-row-label { color: rgba(255,255,255,0.55); }
+.calc-row-value { font-weight: 700; }
+.calc-row-value.green { color: var(--emerald); }
+.calc-row-value.red { color: #F87171; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero-visual { display: none; }
+  .hero-content { max-width: 100%; }
+  .ai-section { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+  .calc-grid { grid-template-columns: 1fr; }
+  .calc-section { margin: 0; border-radius: 0; }
+}
+
+@media (max-width: 640px) {
+  nav { padding: 14px 5%; }
+  .nav-links { display: none; }
+  section { padding: 60px 5%; }
+  .forms-bg { padding: 30px 20px; }
+  .benefits-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .process-steps { gap: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- WhatsApp Float -->
+<a class="wa-float" href="https://wa.me/917622093024" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">⚡</div>
+    TaxAI Pro
+  </div>
+  <ul class="nav-links">
+    <li><a href="#why">Why ITR?</a></li>
+    <li><a href="#forms">ITR Forms</a></li>
+    <li><a href="#ai">AI Assistant</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">File My ITR</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>✨</span> India's #1 AI-Powered ITR Filing Platform
+    </div>
+    <h1>File Your Income Tax<br>Return with <span>Confidence</span></h1>
+    <p>AI-powered tax filing platform helping professionals, freelancers, and businesses file accurate returns while maximizing tax benefits. Fast, secure, and hassle-free.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">⚡ File My ITR Now</a>
+      <a href="#contact" class="btn-outline">📅 Free Consultation</a>
+    </div>
+  </div>
+
+  <!-- Hero Dashboard Visual -->
+  <div class="hero-visual">
+    <div style="position:relative;">
+      <div class="float-card float-1">✅ ITR Filed Successfully</div>
+      <div class="float-card float-2">💰 Refund: ₹24,500</div>
+      <div class="float-card float-3">🔒 256-bit Encrypted</div>
+
+      <div class="dashboard-card">
+        <div class="dash-header">
+          <div class="dash-avatar">📊</div>
+          <div>
+            <div class="dash-title">ITR Filing Dashboard</div>
+            <div class="dash-sub">AY 2024-25</div>
+          </div>
+          <div class="dash-status">Active</div>
+        </div>
+
+        <div class="dash-progress">
+          <div class="dash-progress-label">
+            <span>Filing Progress</span><span>78%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
+        </div>
+
+        <div class="dash-stats">
+          <div class="stat-mini">
+            <div class="stat-mini-num">₹8.4L</div>
+            <div class="stat-mini-label">Total Income</div>
+          </div>
+          <div class="stat-mini">
+            <div class="stat-mini-num">₹24.5K</div>
+            <div class="stat-mini-label">Est. Refund</div>
+          </div>
+        </div>
+
+        <div class="dash-items">
+          <div class="dash-item">
+            <div class="dash-item-icon" style="background:rgba(37,99,235,0.2);">📄</div>
+            <div>
+              <div style="font-weight:600;font-size:13px;">Form 16 Uploaded</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.45);">Employer verified</div>
+            </div>
+            <span class="dash-item-check">✓</span>
+          </div>
+          <div class="dash-item">
+            <div class="dash-item-icon" style="background:rgba(16,185,129,0.2);">🤖</div>
+            <div>
+              <div style="font-weight:600;font-size:13px;">AI Analysis Done</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.45);">3 deductions found</div>
+            </div>
+            <span class="dash-item-check" style="color:var(--emerald);">✓</span>
+          </div>
+          <div class="dash-item">
+            <div class="dash-item-icon" style="background:rgba(251,191,36,0.2);">⏳</div>
+            <div>
+              <div style="font-weight:600;font-size:13px;">Expert Review</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.45);">In progress</div>
+            </div>
+            <div style="font-size:11px;color:#FBBF24;font-weight:600;margin-left:auto;">Pending</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST STRIP ══ -->
+<div class="trust-strip">
+  <div class="trust-items">
+    <div class="trust-item"><div class="trust-icon">🔒</div>Secure & Encrypted</div>
+    <div class="trust-item"><div class="trust-icon">👨‍💼</div>Expert Tax Professionals</div>
+    <div class="trust-item"><div class="trust-icon">🤖</div>AI-Assisted Filing</div>
+    <div class="trust-item"><div class="trust-icon">⚡</div>Fast Processing</div>
+    <div class="trust-item"><div class="trust-icon">🔐</div>100% Confidential</div>
+    <div class="trust-item"><div class="trust-icon">⭐</div>Customer First</div>
+  </div>
+</div>
+
+<!-- ══ WHY FILE ITR ══ -->
+<section id="why">
+  <div class="reveal">
+    <div class="section-tag">📋 Benefits</div>
+    <h2 class="section-title">Why Should You File Your ITR?</h2>
+    <p class="section-sub">Filing your income tax return is more than compliance — it's a financial superpower that opens doors across banking, travel, and business.</p>
+  </div>
+
+  <div class="why-grid reveal">
+    <div class="why-card">
+      <div class="why-icon">🏦</div>
+      <div class="why-title">Easy Loan Approvals</div>
+      <div class="why-desc">ITR acts as proof of income, making home loan, personal loan, and business loan approvals faster and easier.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">✈️</div>
+      <div class="why-title">Faster Visa Processing</div>
+      <div class="why-desc">Embassies often require last 3 years ITR for visa approval. Strong ITR history increases acceptance rate.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📜</div>
+      <div class="why-title">Proof of Income</div>
+      <div class="why-desc">ITR is the most credible income proof for freelancers, consultants, and self-employed professionals.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💳</div>
+      <div class="why-title">Financial Credibility</div>
+      <div class="why-desc">Build a strong financial profile that helps with premium credit cards, high credit limits, and better rates.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💰</div>
+      <div class="why-title">Claim Tax Refunds</div>
+      <div class="why-desc">Excess TDS deducted by employer or clients can be claimed back as a refund — your money, returned.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🚀</div>
+      <div class="why-title">Business Funding</div>
+      <div class="why-desc">Investors and banks verify ITR records before funding startups or providing business capital.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📈</div>
+      <div class="why-title">Better Financial Planning</div>
+      <div class="why-desc">Filing ITR helps you understand your income patterns, investments, and tax liabilities clearly.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💎</div>
+      <div class="why-title">Wealth Creation</div>
+      <div class="why-desc">Smart tax planning through ITR enables better investment decisions and long-term wealth building.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ITR FORMS ══ -->
+<section id="forms" style="background:rgba(255,255,255,0.015);">
+  <div class="reveal">
+    <div class="section-tag">📑 ITR Forms</div>
+    <h2 class="section-title">Which ITR Form Do You Need?</h2>
+    <p class="section-sub">Every taxpayer has a different profile. Our AI automatically identifies the right form for you based on your income sources.</p>
+  </div>
+
+  <div class="forms-grid reveal">
+    <div class="form-card">
+      <div class="form-badge">ITR-1</div>
+      <div class="form-name">Sahaj</div>
+      <div class="form-title">Salaried Individuals</div>
+      <ul class="form-list">
+        <li>Salaried employees</li>
+        <li>Pension income</li>
+        <li>One house property</li>
+        <li>Other small income sources</li>
+        <li>Income up to ₹50 Lakhs</li>
+      </ul>
+      <div class="form-docs">📎 Docs: Form 16, Bank Statement, Investment Proofs</div>
+    </div>
+
+    <div class="form-card">
+      <div class="form-badge" style="background:linear-gradient(135deg,#7C3AED,#5B21B6)">ITR-2</div>
+      <div class="form-name">Capital Gains & HNI</div>
+      <div class="form-title">Multiple Income Sources</div>
+      <ul class="form-list">
+        <li>Capital gains (stocks, property)</li>
+        <li>Multiple house properties</li>
+        <li>Foreign assets or income</li>
+        <li>High net worth individuals</li>
+        <li>No business/profession income</li>
+      </ul>
+      <div class="form-docs">📎 Docs: Capital Gains Statement, Property Details, Foreign Income Proof</div>
+    </div>
+
+    <div class="form-card">
+      <div class="form-badge" style="background:linear-gradient(135deg,#0D9488,#0F766E)">ITR-3</div>
+      <div class="form-name">Business & Profession</div>
+      <div class="form-title">Business Owners & Professionals</div>
+      <ul class="form-list">
+        <li>Business owners & proprietors</li>
+        <li>Doctors, lawyers, architects</li>
+        <li>Freelancers with business income</li>
+        <li>Partnership firm partners</li>
+        <li>Directors in companies</li>
+      </ul>
+      <div class="form-docs">📎 Docs: P&L Statement, Balance Sheet, GST Returns</div>
+    </div>
+
+    <div class="form-card">
+      <div class="form-badge" style="background:linear-gradient(135deg,#EA580C,#C2410C)">ITR-4</div>
+      <div class="form-name">Sugam</div>
+      <div class="form-title">Presumptive Tax Scheme</div>
+      <ul class="form-list">
+        <li>Small business owners (turnover &lt;₹2Cr)</li>
+        <li>Professionals (income &lt;₹50L)</li>
+        <li>Freelancers & consultants</li>
+        <li>Simpler presumptive taxation</li>
+        <li>No detailed books required</li>
+      </ul>
+      <div class="form-docs">📎 Docs: Income records, Bank Statement, TDS Certificate</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AI ASSISTANT ══ -->
+<section id="ai">
+  <div class="ai-section">
+    <div>
+      <div class="reveal">
+        <div class="section-tag">🤖 AI Powered</div>
+        <h2 class="section-title">Meet Your AI Tax Filing Assistant</h2>
+        <p class="section-sub">Our intelligent AI doesn't just file your taxes — it understands your financial profile, finds hidden deductions, and guides you every step of the way.</p>
+      </div>
+
+      <div class="ai-features reveal">
+        <div class="ai-feature">
+          <div class="ai-feature-icon">📄</div>
+          <div>
+            <div class="ai-feature-title">Smart Document Analysis</div>
+            <div class="ai-feature-desc">Upload Form 16, bank statements, and investment proofs. AI extracts and organizes data automatically.</div>
+          </div>
+        </div>
+        <div class="ai-feature">
+          <div class="ai-feature-icon">🧮</div>
+          <div>
+            <div class="ai-feature-title">Automatic Tax Calculations</div>
+            <div class="ai-feature-desc">Computes your tax liability under both Old and New Tax Regimes and recommends the best option.</div>
+          </div>
+        </div>
+        <div class="ai-feature">
+          <div class="ai-feature-icon">🚨</div>
+          <div>
+            <div class="ai-feature-title">Error Detection & Prevention</div>
+            <div class="ai-feature-desc">Catches mismatches with Form 26AS, AIS, and TIS before submission to avoid notices.</div>
+          </div>
+        </div>
+        <div class="ai-feature">
+          <div class="ai-feature-icon">💡</div>
+          <div>
+            <div class="ai-feature-title">Tax-Saving Suggestions</div>
+            <div class="ai-feature-desc">Personalized 80C, 80D, HRA, and other deduction recommendations based on your profile.</div>
+          </div>
+        </div>
+        <div class="ai-feature">
+          <div class="ai-feature-icon">💰</div>
+          <div>
+            <div class="ai-feature-title">Refund Estimation</div>
+            <div class="ai-feature-desc">Know your expected refund amount instantly before you even file the return.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-visual reveal">
+      <div class="ai-visual-inner">
+        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);margin-bottom:20px;text-transform:uppercase;letter-spacing:1px;">AI Tax Chat</div>
+        <div class="ai-chat">
+          <div class="chat-msg">
+            <div class="chat-avatar ai-avatar">🤖</div>
+            <div class="chat-bubble ai">Hello! I'm your AI Tax Assistant. I've analyzed your documents. Your total income is ₹8,40,000. Shall I find the best deductions for you?</div>
+          </div>
+          <div class="chat-msg user">
+            <div class="chat-avatar user-avatar">👤</div>
+            <div class="chat-bubble user-msg">Yes please! I want to save maximum tax this year.</div>
+          </div>
+          <div class="chat-msg">
+            <div class="chat-avatar ai-avatar">🤖</div>
+            <div class="chat-bubble ai">🎉 Great news! I found ₹1,50,000 under 80C, ₹25,000 under 80D, and ₹50,000 standard deduction. Total savings: <strong>₹62,400</strong> in tax!</div>
+          </div>
+          <div class="chat-msg user">
+            <div class="chat-avatar user-avatar">👤</div>
+            <div class="chat-bubble user-msg">Wow! What's my final tax liability?</div>
+          </div>
+          <div class="chat-msg">
+            <div class="chat-avatar ai-avatar">🤖</div>
+            <div class="chat-bubble ai">
+              <div class="typing"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TAX CALCULATOR ══ -->
+<div class="calc-section" id="calculator">
+  <div class="reveal" style="text-align:center;margin-bottom:50px;">
+    <div class="section-tag" style="justify-content:center;">🧮 Free Tool</div>
+    <h2 class="section-title">Quick Tax Calculator</h2>
+    <p class="section-sub" style="margin:0 auto;">Estimate your tax liability and potential refund in seconds.</p>
+  </div>
+
+  <div class="calc-grid reveal">
+    <div class="calc-inputs">
+      <div class="calc-slider-group">
+        <div class="calc-slider-label">
+          <span>Annual Income</span>
+          <span class="calc-slider-value" id="incomeVal">₹8,00,000</span>
+        </div>
+        <input type="range" min="250000" max="5000000" step="50000" value="800000" id="incomeSlider">
+      </div>
+
+      <div class="calc-slider-group">
+        <div class="calc-slider-label">
+          <span>80C Investments (PPF, ELSS, LIC)</span>
+          <span class="calc-slider-value" id="sec80cVal">₹1,50,000</span>
+        </div>
+        <input type="range" min="0" max="150000" step="5000" value="150000" id="sec80cSlider">
+      </div>
+
+      <div class="calc-slider-group">
+        <div class="calc-slider-label">
+          <span>80D Health Insurance Premium</span>
+          <span class="calc-slider-value" id="sec80dVal">₹25,000</span>
+        </div>
+        <input type="range" min="0" max="50000" step="5000" value="25000" id="sec80dSlider">
+      </div>
+
+      <div class="calc-slider-group">
+        <div class="calc-slider-label">
+          <span>HRA Exemption</span>
+          <span class="calc-slider-value" id="hraVal">₹1,20,000</span>
+        </div>
+        <input type="range" min="0" max="300000" step="10000" value="120000" id="hraSlider">
+      </div>
+    </div>
+
+    <div class="calc-result">
+      <div class="calc-result-title">Estimated Tax Liability (Old Regime)</div>
+      <div class="calc-result-num" id="taxResult">₹0</div>
+
+      <div class="calc-breakdown">
+        <div class="calc-row">
+          <span class="calc-row-label">Gross Income</span>
+          <span class="calc-row-value" id="grossIncome">₹8,00,000</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-row-label">Total Deductions</span>
+          <span class="calc-row-value green" id="totalDeductions">-₹3,45,000</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-row-label">Taxable Income</span>
+          <span class="calc-row-value" id="taxableIncome">₹4,55,000</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-row-label">Tax Payable</span>
+          <span class="calc-row-value red" id="taxPayable">₹10,400</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-row-label">+ 4% Health & Education Cess</span>
+          <span class="calc-row-value red" id="cessAmount">₹416</span>
+        </div>
+        <div class="calc-row" style="margin-top:4px;">
+          <span style="font-weight:800;font-size:14px;">Total Tax</span>
+          <span style="font-weight:800;font-size:14px;color:var(--emerald);" id="totalTax">₹10,816</span>
+        </div>
+      </div>
+
+      <a href="#contact" class="btn-primary" style="width:100%;justify-content:center;margin-top:24px;">
+        File My ITR & Save More ⚡
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PROCESS ══ -->
+<section id="process" class="process-section">
+  <div class="reveal" style="text-align:center;">
+    <div class="section-tag" style="justify-content:center;">🔄 How It Works</div>
+    <h2 class="section-title">File Your ITR in 5 Simple Steps</h2>
+    <p class="section-sub" style="margin:0 auto 56px;">From document upload to refund tracking — we handle everything for you.</p>
+  </div>
+
+  <div style="position:relative;max-width:900px;margin:0 auto;">
+    <div class="process-line"></div>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="step-circle" data-num="1">📤</div>
+        <div class="step-title">Upload Documents</div>
+        <div class="step-desc">Securely upload Form 16, bank statements, and investment proofs</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle" data-num="2">🤖</div>
+        <div class="step-title">AI Reviews Data</div>
+        <div class="step-desc">Our AI analyzes your documents and identifies all deductions</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle" data-num="3">👨‍💼</div>
+        <div class="step-title">Expert Verification</div>
+        <div class="step-desc">CA-qualified expert reviews your return for accuracy</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle" data-num="4">📋</div>
+        <div class="step-title">Return Filing</div>
+        <div class="step-desc">Your ITR is filed on the Income Tax portal with acknowledgment</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle" data-num="5">💰</div>
+        <div class="step-title">Track Refund</div>
+        <div class="step-desc">We track your refund status and notify you instantly</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BENEFITS ══ -->
+<section>
+  <div class="reveal" style="text-align:center;">
+    <div class="section-tag" style="justify-content:center;">💎 Customer Benefits</div>
+    <h2 class="section-title">Organized Finances, Better Life</h2>
+    <p class="section-sub" style="margin:0 auto 56px;">Regular ITR filing is the foundation of financial discipline and long-term wealth creation.</p>
+  </div>
+
+  <div class="benefits-grid reveal">
+    <div class="benefit-card">
+      <div class="benefit-icon">📊</div>
+      <div class="benefit-title">Better Financial Discipline</div>
+      <div class="benefit-desc">Annual filing keeps your finances organized and goals on track.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">💎</div>
+      <div class="benefit-title">Wealth Creation</div>
+      <div class="benefit-desc">Smart tax savings redirected to investments compound over time.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">📈</div>
+      <div class="benefit-title">Investment Planning</div>
+      <div class="benefit-desc">Understand your tax liability and invest in the right instruments.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🎯</div>
+      <div class="benefit-title">Tax Optimization</div>
+      <div class="benefit-desc">Legally minimize your tax outgo through strategic deductions.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🚀</div>
+      <div class="benefit-title">Business Growth</div>
+      <div class="benefit-desc">Clean ITR history attracts investors and enables business funding.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🏦</div>
+      <div class="benefit-title">Loan Eligibility</div>
+      <div class="benefit-desc">Strong ITR records unlock better loan terms and higher limits.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🌅</div>
+      <div class="benefit-title">Retirement Planning</div>
+      <div class="benefit-desc">Build a strong corpus by maximizing tax-efficient retirement investments.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon">🕊️</div>
+      <div class="benefit-title">Financial Freedom</div>
+      <div class="benefit-desc">Achieve complete financial independence through smart tax planning.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section style="background:rgba(255,255,255,0.015);">
+  <div class="reveal" style="text-align:center;">
+    <div class="section-tag" style="justify-content:center;">⭐ Testimonials</div>
+    <h2 class="section-title">Trusted by Thousands</h2>
+    <p class="section-sub" style="margin:0 auto 56px;">Professionals, freelancers, and business owners across India trust TaxAI Pro for their ITR filing.</p>
+  </div>
+
+  <div class="testimonials-grid reveal">
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"As a software engineer, I had stock options, RSUs, and freelance income. TaxAI Pro handled everything perfectly and found deductions I didn't even know existed. Got ₹38,000 refund!"</div>
+      <div class="t-author">
+        <div class="t-avatar">A</div>
+        <div>
+          <div class="t-name">Arjun Mehta</div>
+          <div class="t-role">Senior Software Engineer, Bengaluru</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"I'm a freelance UI designer and always feared tax filing. The AI assistant walked me through everything, calculated my professional expenses, and filed my ITR in under 2 hours. Amazing!"</div>
+      <div class="t-author">
+        <div class="t-avatar">P</div>
+        <div>
+          <div class="t-name">Priya Sharma</div>
+          <div class="t-role">Freelance Designer, Mumbai</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"Running a small business, I had complex GST and income tax situations. The expert team handled my ITR-3 flawlessly. My loan got approved within days using the ITR acknowledgment!"</div>
+      <div class="t-author">
+        <div class="t-avatar">R</div>
+        <div>
+          <div class="t-name">Rahul Patel</div>
+          <div class="t-role">Business Owner, Ahmedabad</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"First time filing ITR as a consultant. The AI suggested ITR-4 under presumptive taxation and I saved so much time. The entire process was transparent and stress-free. Highly recommended!"</div>
+      <div class="t-author">
+        <div class="t-avatar">S</div>
+        <div>
+          <div class="t-name">Sneha Joshi</div>
+          <div class="t-role">Management Consultant, Pune</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"The AI detected a mismatch in my Form 26AS that I would have missed. Saved me from a potential tax notice. The proactive error detection feature alone is worth every rupee!"</div>
+      <div class="t-author">
+        <div class="t-avatar">V</div>
+        <div>
+          <div class="t-name">Vikram Nair</div>
+          <div class="t-role">Investment Banker, Delhi</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"Started using TaxAI Pro 3 years ago. Every year they maximize my 80C, 80D, and HRA benefits. I've saved over ₹2 lakhs in taxes over 3 years. This is the best tax service in India."</div>
+      <div class="t-author">
+        <div class="t-avatar">M</div>
+        <div>
+          <div class="t-name">Meera Agarwal</div>
+          <div class="t-role">HR Manager, Hyderabad</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section id="faq">
+  <div class="reveal" style="text-align:center;">
+    <div class="section-tag" style="justify-content:center;">❓ FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub" style="margin:0 auto 56px;">Everything you need to know about ITR filing with TaxAI Pro.</p>
+  </div>
+
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What is the last date to file ITR for AY 2024-25?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">The due date for filing ITR for most individuals (without audit) for AY 2024-25 is 31st July 2024. For those requiring audit, the due date is 31st October 2024. Filing before the deadline avoids penalties of ₹5,000 (₹1,000 for income below ₹5L).</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What documents do I need to file my ITR?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Key documents include: Form 16 (from employer), Form 26AS, AIS (Annual Information Statement), bank statements, investment proofs (80C, 80D), home loan certificate, rent receipts (HRA), and capital gains statements from broker. Our AI helps you identify exactly what's needed based on your profile.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        How does the AI detect errors in my tax return?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Our AI cross-references your data with Form 26AS, AIS, and TIS from the Income Tax portal. It checks for TDS mismatches, missing income declarations, incorrect PAN details, and incorrect deduction claims — preventing tax notices before they happen.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        When will I receive my tax refund?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Refunds are typically processed within 4-8 weeks of ITR filing verification (e-verification via Aadhaar OTP takes 2 minutes). We track your refund status and notify you at every stage via WhatsApp and email.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Is my financial data safe on TaxAI Pro?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Absolutely. We use 256-bit SSL encryption for all data transfers, and your documents are stored in encrypted cloud servers. We never share your data with third parties. Our platform is compliant with Indian data protection standards and you can request data deletion anytime.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        I'm a freelancer with multiple clients. Which ITR form should I file?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Most freelancers and consultants file ITR-3 or ITR-4 (Sugam under presumptive scheme). If your professional income is below ₹50 Lakhs and you opt for Section 44ADA, ITR-4 is simpler and doesn't require detailed books. Our AI recommends the best form for your exact situation.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What is the difference between Old and New Tax Regime?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">The Old Regime offers multiple deductions (80C, 80D, HRA, etc.) with higher tax slabs. The New Regime offers lower tax rates but no deductions. Our AI calculator automatically computes your liability under both regimes and recommends which saves you more money based on your specific deductions.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" style="background:rgba(255,255,255,0.015);">
+  <div class="reveal" style="text-align:center;margin-bottom:60px;">
+    <div class="section-tag" style="justify-content:center;">📞 Contact</div>
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-sub" style="margin:0 auto;">Free consultation with our tax experts. We'll review your profile and recommend the best filing strategy.</p>
+  </div>
+
+  <div class="contact-grid reveal">
+    <div class="contact-info">
+      <a class="contact-card" href="tel:+917622093024">
+        <div class="contact-card-icon">📞</div>
+        <div>
+          <div class="contact-card-label">Call Us (Mon-Sat, 9AM-7PM)</div>
+          <div class="contact-card-value">+91 76220 93024</div>
+        </div>
+      </a>
+      <a class="contact-card" href="https://wa.me/917622093024" target="_blank">
+        <div class="contact-card-icon">💬</div>
+        <div>
+          <div class="contact-card-label">WhatsApp Us</div>
+          <div class="contact-card-value">+91 76220 93024</div>
+        </div>
+      </a>
+      <a class="contact-card" href="mailto:vaibhavshah1239@gmail.com">
+        <div class="contact-card-icon">📧</div>
+        <div>
+          <div class="contact-card-label">Email Us</div>
+          <div class="contact-card-value">vaibhavshah1239@gmail.com</div>
+        </div>
+      </a>
+      <div class="contact-card" style="cursor:default;">
+        <div class="contact-card-icon">📍</div>
+        <div>
+          <div class="contact-card-label">Office Address</div>
+          <div class="contact-card-value">A-203, Shree sadan 17, Vasna, Ahmedabad - 380007</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:36px;">
+        <h3 style="font-family:'DM Serif Display',serif;font-size:22px;margin-bottom:24px;">Get Free Tax Consultation</h3>
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" placeholder="Rahul Sharma">
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" placeholder="+91 76220 93024">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="rahul@example.com">
+          </div>
+          <div class="form-group">
+            <label>I am a...</label>
+            <select>
+              <option value="">Select your profile</option>
+              <option>Salaried Employee</option>
+              <option>IT Professional</option>
+              <option>Freelancer/Consultant</option>
+              <option>Business Owner</option>
+              <option>Self-Employed Professional</option>
+              <option>Startup Founder</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Annual Income (approx)</label>
+            <select>
+              <option>Below ₹5 Lakhs</option>
+              <option>₹5L – ₹10L</option>
+              <option>₹10L – ₹25L</option>
+              <option>₹25L – ₹50L</option>
+              <option>Above ₹50 Lakhs</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message (Optional)</label>
+            <textarea placeholder="Tell us about your income sources, specific queries..."></textarea>
+          </div>
+          <button class="btn-primary" style="width:100%;justify-content:center;font-size:16px;">
+            ⚡ Get Free Consultation
+          </button>
+          <p style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">🔒 Your information is 100% confidential & encrypted</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-icon">⚡</div>
+        TaxAI Pro
+      </div>
+      <p>India's most trusted AI-powered ITR filing platform. Fast, accurate, and secure tax filing for every Indian taxpayer.</p>
+      <div class="social-links" style="margin-top:20px;">
+        <a class="social-link" href="#">𝕏</a>
+        <a class="social-link" href="#">in</a>
+        <a class="social-link" href="#">f</a>
+        <a class="social-link" href="#">▶</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul class="footer-links">
+        <li><a href="#">ITR-1 Filing (Salaried)</a></li>
+        <li><a href="#">ITR-2 (Capital Gains)</a></li>
+        <li><a href="#">ITR-3 (Business)</a></li>
+        <li><a href="#">ITR-4 (Presumptive)</a></li>
+        <li><a href="#">Tax Planning</a></li>
+        <li><a href="#">Tax Notice Help</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Tax Resources</h4>
+      <ul class="footer-links">
+        <li><a href="#">ITR Filing Guide</a></li>
+        <li><a href="#">Tax Calculator</a></li>
+        <li><a href="#">80C Deductions</a></li>
+        <li><a href="#">HRA Calculator</a></li>
+        <li><a href="#">Capital Gains Guide</a></li>
+        <li><a href="#">Income Tax Blog</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our CA Team</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Refund Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2024 TaxAI Pro. All rights reserved. | CIN: U74999MH2024PTC000000</p>
+    <p style="color:rgba(255,255,255,0.25);">This platform is for informational purposes only. For complex tax matters, always consult a qualified CA.</p>
+  </div>
+</footer>
+
+<script>
+// ── SCROLL REVEAL ──
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => revealObserver.observe(el));
+
+// ── FAQ ──
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── TAX CALCULATOR ──
+function formatINR(num) {
+  return '₹' + num.toLocaleString('en-IN');
+}
+
+function calcTax(income) {
+  let tax = 0;
+  if (income <= 250000) tax = 0;
+  else if (income <= 500000) tax = (income - 250000) * 0.05;
+  else if (income <= 1000000) tax = 12500 + (income - 500000) * 0.20;
+  else tax = 112500 + (income - 1000000) * 0.30;
+  return tax;
+}
+
+function updateCalc() {
+  const income = +document.getElementById('incomeSlider').value;
+  const s80c = Math.min(+document.getElementById('sec80cSlider').value, 150000);
+  const s80d = Math.min(+document.getElementById('sec80dSlider').value, 50000);
+  const hra  = +document.getElementById('hraSlider').value;
+  const std  = 50000;
+
+  document.getElementById('incomeVal').textContent  = formatINR(income);
+  document.getElementById('sec80cVal').textContent  = formatINR(s80c);
+  document.getElementById('sec80dVal').textContent  = formatINR(s80d);
+  document.getElementById('hraVal').textContent     = formatINR(hra);
+
+  const totalDed  = s80c + s80d + hra + std;
+  const taxable   = Math.max(0, income - totalDed);
+  const baseTax   = calcTax(taxable);
+  const cess      = Math.round(baseTax * 0.04);
+  const totalTax  = Math.round(baseTax + cess);
+
+  document.getElementById('grossIncome').textContent    = formatINR(income);
+  document.getElementById('totalDeductions').textContent = '-' + formatINR(totalDed);
+  document.getElementById('taxableIncome').textContent  = formatINR(taxable);
+  document.getElementById('taxPayable').textContent     = formatINR(Math.round(baseTax));
+  document.getElementById('cessAmount').textContent     = formatINR(cess);
+  document.getElementById('totalTax').textContent       = formatINR(totalTax);
+  document.getElementById('taxResult').textContent      = formatINR(totalTax);
+}
+
+['incomeSlider','sec80cSlider','sec80dSlider','hraSlider'].forEach(id => {
+  document.getElementById(id).addEventListener('input', updateCalc);
+});
+updateCalc();
+
+// ── NAV SCROLL EFFECT ──
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.background = window.scrollY > 60
+    ? 'rgba(15,23,42,0.97)'
+    : 'rgba(15,23,42,0.85)';
+});
+</script>
+
+<!-- ══════════════════════════════════════════════
+     AI CHATBOT STYLES
+══════════════════════════════════════════════ -->
+<style>
+/* ── CHAT LAUNCHER ── */
+.chat-launcher {
+  position: fixed; bottom: 28px; left: 28px; z-index: 9999;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+}
+
+.chat-launcher-btn {
+  width: 62px; height: 62px; border-radius: 50%;
+  background: linear-gradient(135deg, #2563EB, #10B981);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 6px 24px rgba(37,99,235,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: chatPulse 2.5s infinite;
+  position: relative;
+}
+
+.chat-launcher-btn:hover { transform: scale(1.08); box-shadow: 0 10px 32px rgba(37,99,235,0.6); }
+
+@keyframes chatPulse {
+  0%,100% { box-shadow: 0 6px 24px rgba(37,99,235,0.45); }
+  50%      { box-shadow: 0 6px 32px rgba(37,99,235,0.7), 0 0 0 10px rgba(37,99,235,0.1); }
+}
+
+.chat-launcher-label {
+  background: linear-gradient(135deg,#0F172A,#1e293b);
+  border: 1px solid rgba(37,99,235,0.3);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 12px; font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  position: absolute;
+  left: 72px; bottom: 10px;
+  animation: labelBounce 3s ease-in-out infinite;
+}
+
+@keyframes labelBounce {
+  0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)}
+}
+
+.chat-notif {
+  position: absolute; top: -4px; right: -4px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: #EF4444;
+  font-size: 10px; font-weight: 800; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #0F172A;
+}
+
+/* ── CHAT WINDOW ── */
+.chat-window {
+  position: fixed; bottom: 100px; left: 28px; z-index: 9998;
+  width: 380px;
+  background: #0F172A;
+  border: 1px solid rgba(37,99,235,0.3);
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  display: flex; flex-direction: column;
+  max-height: 580px;
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  overflow: hidden;
+}
+
+.chat-window.open {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Header */
+.chat-head {
+  background: linear-gradient(135deg, #1e3a5f, #1B3A5C);
+  padding: 16px 18px;
+  display: flex; align-items: center; gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  flex-shrink: 0;
+}
+
+.chat-head-avatar {
+  width: 42px; height: 42px; border-radius: 12px;
+  background: linear-gradient(135deg, #2563EB, #10B981);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+  position: relative;
+}
+
+.chat-head-avatar::after {
+  content: '';
+  position: absolute; bottom: -2px; right: -2px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: #10B981;
+  border: 2px solid #1e3a5f;
+}
+
+.chat-head-info { flex: 1; }
+.chat-head-name { font-size: 14px; font-weight: 700; color: #fff; }
+.chat-head-status { font-size: 11px; color: #10B981; margin-top: 2px; font-weight: 600; }
+
+.chat-head-close {
+  background: rgba(255,255,255,0.08);
+  border: none; color: rgba(255,255,255,0.6);
+  width: 30px; height: 30px; border-radius: 8px;
+  cursor: pointer; font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+
+.chat-head-close:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+/* Messages */
+.chat-messages {
+  flex: 1; overflow-y: auto;
+  padding: 16px;
+  display: flex; flex-direction: column; gap: 12px;
+  scroll-behavior: smooth;
+}
+
+.chat-messages::-webkit-scrollbar { width: 4px; }
+.chat-messages::-webkit-scrollbar-thumb { background: rgba(37,99,235,0.4); border-radius: 2px; }
+
+.msg-row { display: flex; gap: 8px; align-items: flex-end; }
+.msg-row.user { flex-direction: row-reverse; }
+
+.msg-av {
+  width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 13px;
+}
+
+.msg-av.ai { background: rgba(37,99,235,0.2); }
+.msg-av.user { background: rgba(16,185,129,0.2); }
+
+.msg-bubble {
+  max-width: 78%; padding: 11px 14px;
+  font-size: 13px; line-height: 1.65;
+  border-radius: 14px;
+}
+
+.msg-bubble.ai {
+  background: rgba(37,99,235,0.1);
+  border: 1px solid rgba(37,99,235,0.2);
+  color: rgba(255,255,255,0.88);
+  border-radius: 14px 14px 14px 4px;
+}
+
+.msg-bubble.user {
+  background: linear-gradient(135deg, #2563EB, #1d4ed8);
+  color: #fff;
+  border-radius: 14px 14px 4px 14px;
+}
+
+.msg-bubble.system {
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.2);
+  color: rgba(255,255,255,0.7);
+  border-radius: 10px;
+  font-size: 12px; font-style: italic;
+  text-align: center; max-width: 100%;
+}
+
+/* Quick reply buttons */
+.quick-replies {
+  display: flex; flex-wrap: wrap; gap: 7px;
+  padding: 4px 0 4px 36px;
+}
+
+.qr-btn {
+  background: rgba(37,99,235,0.1);
+  border: 1px solid rgba(37,99,235,0.3);
+  color: #60A5FA;
+  padding: 6px 12px; border-radius: 100px;
+  font-size: 12px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+  font-family: 'Sora', sans-serif;
+}
+
+.qr-btn:hover { background: rgba(37,99,235,0.25); color: #fff; }
+
+/* Typing indicator */
+.typing-dots {
+  display: flex; gap: 4px; align-items: center; padding: 4px 2px;
+}
+
+.typing-dots span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(37,99,235,0.7);
+  animation: typeDot 1.2s infinite;
+}
+
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typeDot { 0%,60%,100%{opacity:0.3;transform:scale(0.7)} 30%{opacity:1;transform:scale(1)} }
+
+/* Result card */
+.result-card {
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.25);
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 4px;
+}
+
+.result-row {
+  display: flex; justify-content: space-between;
+  font-size: 12px; padding: 5px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.7);
+}
+
+.result-row:last-child { border-bottom: none; }
+.result-row strong { color: #fff; }
+.result-row .green { color: #10B981; font-weight: 700; }
+.result-row .red   { color: #F87171; font-weight: 700; }
+.result-row .gold  { color: #FBBF24; font-weight: 700; }
+
+/* Health score */
+.health-score-wrap {
+  text-align: center; padding: 10px 0;
+}
+
+.health-circle {
+  width: 90px; height: 90px; border-radius: 50%;
+  margin: 0 auto 10px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-size: 26px; font-weight: 800;
+  border: 3px solid;
+  transition: all 0.5s;
+}
+
+.score-label {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* WA button in chat */
+.chat-wa-btn {
+  display: flex; align-items: center; gap: 8px;
+  background: #25D366;
+  color: #fff; border: none;
+  padding: 10px 16px; border-radius: 10px;
+  font-size: 13px; font-weight: 700;
+  cursor: pointer; margin-top: 8px;
+  width: 100%;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  transition: transform 0.2s;
+  text-decoration: none;
+}
+
+.chat-wa-btn:hover { transform: translateY(-1px); }
+
+/* Input area */
+.chat-input-area {
+  padding: 12px 14px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  display: flex; gap: 10px; align-items: center;
+  flex-shrink: 0;
+  background: rgba(0,0,0,0.2);
+}
+
+.chat-input {
+  flex: 1; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  color: #fff; padding: 10px 14px;
+  font-size: 13px; outline: none;
+  font-family: 'Sora', sans-serif;
+  transition: border-color 0.2s;
+}
+
+.chat-input:focus { border-color: rgba(37,99,235,0.5); }
+.chat-input::placeholder { color: rgba(255,255,255,0.3); }
+
+.chat-send {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: linear-gradient(135deg, #2563EB, #1d4ed8);
+  border: none; cursor: pointer; color: #fff;
+  font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s;
+}
+
+.chat-send:hover { transform: scale(1.05); }
+
+/* Disclaimer */
+.chat-disclaimer {
+  font-size: 10px; color: rgba(255,255,255,0.25);
+  padding: 6px 14px 10px;
+  text-align: center; line-height: 1.5;
+  flex-shrink: 0;
+}
+
+/* Lead success */
+.lead-success {
+  background: rgba(16,185,129,0.1);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  font-size: 12px; color: #10B981;
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .chat-window { width: calc(100vw - 20px); left: 10px; bottom: 90px; }
+  .chat-launcher { left: 16px; bottom: 16px; }
+  .chat-launcher-label { display: none; }
+}
+</style>
+
+<!-- ══ CHAT LAUNCHER BUTTON ══ -->
+<div class="chat-launcher">
+  <button class="chat-launcher-btn" onclick="toggleChat()" id="chatLaunchBtn">
+    🤖
+    <span class="chat-notif" id="chatNotif">1</span>
+  </button>
+  <div class="chat-launcher-label" id="chatLabel">Ask AI Tax Expert ⚡</div>
+</div>
+
+<!-- ══ CHAT WINDOW ══ -->
+<div class="chat-window" id="chatWindow">
+  <div class="chat-head">
+    <div class="chat-head-avatar">🤖</div>
+    <div class="chat-head-info">
+      <div class="chat-head-name">TaxAI – Your CA Assistant</div>
+      <div class="chat-head-status">● Online Now · Typically replies instantly</div>
+    </div>
+    <button class="chat-head-close" onclick="toggleChat()">✕</button>
+  </div>
+
+  <div class="chat-messages" id="chatMessages"></div>
+
+  <div class="chat-input-area">
+    <input class="chat-input" id="chatInput" placeholder="Type your message..." onkeydown="if(event.key==='Enter') sendMsg()">
+    <button class="chat-send" onclick="sendMsg()">➤</button>
+  </div>
+
+  <div class="chat-disclaimer">
+    ⚠️ Estimates only. Not professional tax advice. Consult our CA for final filing.
+  </div>
+</div>
+
+<!-- ══ CHATBOT SCRIPT ══ -->
+<script>
+// ────────────────────────────────────────────────────────────
+//  TAXAI PRO – AI CHATBOT ENGINE
+// ────────────────────────────────────────────────────────────
+
+// Google Sheets endpoint (Apps Script Web App URL)
+// Replace this URL after deploying your Google Apps Script
+const SHEETS_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+
+let chatOpen = false;
+let chatStarted = false;
+
+// Conversation state
+let userData = {
+  name: '', mobile: '', email: '', age: 0, status: '',
+  incomeType: '',
+  salary: 0, business: 0, professional: 0, capitalGains: 0,
+  rental: 0, interest: 0, dividend: 0, other: 0,
+  sec80c: 0, sec80d: 0, homeLoan: 0, nps: 0, eduLoan: 0, otherDed: 0,
+  itrForm: '', estimatedTax: 0, taxHealthScore: 0
+};
+
+let step = 0;
+
+// Step definitions
+const STEPS = [
+  { key: 'name',       prompt: "Namaste! 🙏 I'm your AI Tax Consultant at TaxAI Pro.\n\nI can estimate your tax liability, suggest the correct ITR form, and help you save maximum tax — just like a real CA!\n\nMay I know your name?" },
+  { key: 'age',        prompt: (n) => `Thank you, ${n}! 😊\n\nMay I know your age?` },
+  { key: 'status',     prompt: 'Are you a resident Indian or NRI?', options: ['Resident Indian', 'NRI / RNOR'] },
+  { key: 'incomeType', prompt: (n) => `Got it. Now, ${n}, which best describes your primary income source?`,
+    options: ['Salaried Employee', 'Business Owner', 'Freelancer', 'Professional (Doctor/CA/Lawyer)', 'Retired', 'Other'] },
+  { key: 'salary',     prompt: 'What is your annual salary income? (Enter 0 if not applicable)', condition: always },
+  { key: 'business',   prompt: 'Any business income? (Enter 0 if none)', condition: always },
+  { key: 'professional', prompt: 'Any professional income — freelance, consultancy, etc.? (Enter 0 if none)', condition: always },
+  { key: 'capitalGains', prompt: 'Any capital gains — from stocks, mutual funds, or property? (Enter 0 if none)', condition: always },
+  { key: 'rental',     prompt: 'Any rental income from house property? (Enter 0 if none)', condition: always },
+  { key: 'interest',   prompt: 'Interest income from FD, savings account, etc.? (Enter 0 if none)', condition: always },
+  { key: 'sec80c',     prompt: 'Great! Now let\'s find your deductions.\n\n💼 Section 80C investments (PPF, ELSS, LIC, PF, NSC)?\nMax ₹1,50,000. Enter amount:', condition: always },
+  { key: 'sec80d',     prompt: '🏥 Health insurance premium paid (Section 80D)?\nFor self: max ₹25,000 | Senior parents: up to ₹50,000. Enter amount:', condition: always },
+  { key: 'homeLoan',   prompt: '🏠 Home loan interest paid (Section 24b)?\nMax deduction: ₹2,00,000. Enter amount (0 if none):', condition: always },
+  { key: 'nps',        prompt: '📊 NPS contribution (Section 80CCD 1B)?\nAdditional ₹50,000 over 80C. Enter amount:', condition: always },
+  { key: 'mobile',     prompt: (n) => `Almost done, ${n}! 🎉\n\nI'm ready to calculate your complete tax summary.\n\nYour mobile number please? (For our expert to follow up)` },
+];
+
+function always() { return true; }
+
+function fmtINR(n) {
+  return '₹' + Math.round(n).toLocaleString('en-IN');
+}
+
+// Tax calculation – Old Regime
+function calcOldTax(taxable) {
+  let t = 0;
+  if (taxable <= 250000) t = 0;
+  else if (taxable <= 500000) t = (taxable - 250000) * 0.05;
+  else if (taxable <= 1000000) t = 12500 + (taxable - 500000) * 0.20;
+  else t = 112500 + (taxable - 1000000) * 0.30;
+  return Math.round(t * 1.04); // include cess
+}
+
+// Tax calculation – New Regime (FY 2024-25)
+function calcNewTax(income) {
+  let t = 0;
+  if (income <= 300000) t = 0;
+  else if (income <= 600000) t = (income - 300000) * 0.05;
+  else if (income <= 900000) t = 15000 + (income - 600000) * 0.10;
+  else if (income <= 1200000) t = 45000 + (income - 900000) * 0.15;
+  else if (income <= 1500000) t = 90000 + (income - 1200000) * 0.20;
+  else t = 150000 + (income - 1500000) * 0.30;
+  return Math.round(t * 1.04);
+}
+
+// ITR Form recommendation
+function recommendITR() {
+  const hasBusiness = userData.business > 0 || userData.professional > 0;
+  const hasCG = userData.capitalGains > 0;
+  const hasRental = userData.rental > 0;
+  const gross = getTotalIncome();
+
+  if (hasBusiness && userData.incomeType !== 'Business Owner') {
+    if (gross <= 5000000 && userData.professional > 0)
+      return { form: 'ITR-4 (Sugam)', reason: 'You have professional income eligible for presumptive taxation under Sec 44ADA — simplest form, no detailed books needed.' };
+    return { form: 'ITR-3', reason: 'You have business or professional income requiring detailed P&L and Balance Sheet reporting.' };
+  }
+  if (userData.incomeType === 'Business Owner') {
+    if (gross <= 20000000)
+      return { form: 'ITR-4 (Sugam)', reason: 'Small business with turnover below ₹2 Cr can use presumptive taxation under Sec 44AD — much simpler filing.' };
+    return { form: 'ITR-3', reason: 'Business income above presumptive limit requires detailed accounts and ITR-3.' };
+  }
+  if (hasCG || hasRental || userData.status === 'NRI / RNOR') {
+    return { form: 'ITR-2', reason: `You have ${hasCG ? 'capital gains' : ''}${hasRental ? ', rental income' : ''}${userData.status === 'NRI / RNOR' ? ', NRI status' : ''} — ITR-2 is required.` };
+  }
+  return { form: 'ITR-1 (Sahaj)', reason: 'You have simple salary/pension income — ITR-1 (Sahaj) is the easiest and most appropriate form.' };
+}
+
+function getTotalIncome() {
+  return userData.salary + userData.business + userData.professional +
+         userData.capitalGains + userData.rental + userData.interest +
+         userData.dividend + userData.other;
+}
+
+function getTotalDeductions() {
+  return Math.min(userData.sec80c, 150000) +
+         Math.min(userData.sec80d, 75000) +
+         Math.min(userData.homeLoan, 200000) +
+         Math.min(userData.nps, 50000) +
+         userData.eduLoan + userData.otherDed + 50000; // std deduction
+}
+
+function calcHealthScore() {
+  let score = 0;
+  const gross = getTotalIncome();
+  const ded = getTotalDeductions();
+
+  if (userData.sec80c >= 150000) score += 25;
+  else if (userData.sec80c > 50000) score += 12;
+
+  if (userData.sec80d >= 25000) score += 20;
+  else if (userData.sec80d > 0) score += 10;
+
+  if (userData.nps > 0) score += 15;
+
+  if (gross > 0) score += 20; // income disclosed
+
+  if (userData.mobile) score += 10;
+
+  if (ded / gross > 0.3) score += 10;
+
+  return Math.min(100, score);
+}
+
+// ── Toggle chat ──
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chatWindow').classList.toggle('open', chatOpen);
+  document.getElementById('chatNotif').style.display = chatOpen ? 'none' : 'flex';
+  document.getElementById('chatLabel').style.display = chatOpen ? 'none' : 'block';
+
+  if (!chatStarted && chatOpen) {
+    chatStarted = true;
+    setTimeout(() => startChat(), 400);
+  }
+}
+
+// ── Add message ──
+function addMsg(text, type = 'ai', delay = 0) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const msgs = document.getElementById('chatMessages');
+
+      const row = document.createElement('div');
+      row.className = `msg-row ${type === 'user' ? 'user' : ''}`;
+
+      if (type !== 'system') {
+        const av = document.createElement('div');
+        av.className = `msg-av ${type}`;
+        av.textContent = type === 'ai' ? '🤖' : '👤';
+        row.appendChild(av);
+      }
+
+      const bubble = document.createElement('div');
+      bubble.className = `msg-bubble ${type === 'system' ? 'system' : type}`;
+      bubble.innerHTML = text.replace(/\n/g, '<br>');
+      row.appendChild(bubble);
+
+      msgs.appendChild(row);
+      msgs.scrollTop = msgs.scrollHeight;
+      resolve();
+    }, delay);
+  });
+}
+
+// ── Typing indicator ──
+function showTyping() {
+  const msgs = document.getElementById('chatMessages');
+  const row = document.createElement('div');
+  row.className = 'msg-row'; row.id = 'typingRow';
+  const av = document.createElement('div');
+  av.className = 'msg-av ai'; av.textContent = '🤖';
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble ai';
+  bubble.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+  row.appendChild(av); row.appendChild(bubble);
+  msgs.appendChild(row);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function hideTyping() {
+  const t = document.getElementById('typingRow');
+  if (t) t.remove();
+}
+
+// ── Quick reply buttons ──
+function addQuickReplies(options) {
+  const msgs = document.getElementById('chatMessages');
+  const wrap = document.createElement('div');
+  wrap.className = 'quick-replies'; wrap.id = 'quickReplies';
+  options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'qr-btn';
+    btn.textContent = opt;
+    btn.onclick = () => { removeQuickReplies(); handleUserInput(opt); };
+    wrap.appendChild(btn);
+  });
+  msgs.appendChild(wrap);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeQuickReplies() {
+  const q = document.getElementById('quickReplies');
+  if (q) q.remove();
+}
+
+// ── Start conversation ──
+async function startChat() {
+  step = 0;
+  await addMsg(STEPS[0].prompt, 'ai', 300);
+}
+
+// ── Send message ──
+function sendMsg() {
+  const input = document.getElementById('chatInput');
+  const val = input.value.trim();
+  if (!val) return;
+  input.value = '';
+  removeQuickReplies();
+  handleUserInput(val);
+}
+
+// ── Main conversation handler ──
+async function handleUserInput(val) {
+  await addMsg(val, 'user');
+
+  showTyping();
+  await new Promise(r => setTimeout(r, 800 + Math.random() * 600));
+  hideTyping();
+
+  const s = STEPS[step];
+
+  // Save to userData
+  if (s) {
+    const k = s.key;
+    if (['salary','business','professional','capitalGains','rental','interest','dividend','other',
+         'sec80c','sec80d','homeLoan','nps','eduLoan','otherDed'].includes(k)) {
+      userData[k] = parseFloat(val.replace(/[₹,\s]/g, '')) || 0;
+    } else {
+      userData[k] = val;
+    }
+  }
+
+  step++;
+
+  if (step < STEPS.length) {
+    const nextStep = STEPS[step];
+    const prompt = typeof nextStep.prompt === 'function'
+      ? nextStep.prompt(userData.name)
+      : nextStep.prompt;
+
+    await addMsg(prompt, 'ai');
+
+    if (nextStep.options) {
+      addQuickReplies(nextStep.options);
+    }
+
+    // Smart follow-up hints
+    if (nextStep.key === 'capitalGains' && (userData.incomeType === 'Salaried Employee')) {
+      setTimeout(() => addMsg('💡 Even salaried employees need to report mutual fund, stock, or FD gains as capital income.', 'system', 400), 900);
+    }
+
+    if (nextStep.key === 'professional' && userData.incomeType === 'Freelancer') {
+      setTimeout(() => addMsg('💡 As a freelancer, your client fees, project income, or consultancy revenue goes here.', 'system', 400), 900);
+    }
+
+  } else {
+    // ── FINAL CALCULATION ──
+    await showFinalResults();
+  }
+}
+
+// ── Final results ──
+async function showFinalResults() {
+  const gross = getTotalIncome();
+  const ded   = getTotalDeductions();
+  const taxable = Math.max(0, gross - ded);
+  const oldTax  = calcOldTax(taxable);
+  const newTax  = calcNewTax(gross);
+  const itrRec  = recommendITR();
+  const better  = oldTax <= newTax ? 'Old Regime' : 'New Regime';
+  const saving  = Math.abs(oldTax - newTax);
+  const score   = calcHealthScore();
+
+  userData.itrForm      = itrRec.form;
+  userData.estimatedTax = Math.min(oldTax, newTax);
+  userData.taxHealthScore = score;
+
+  // Save lead
+  saveLead();
+
+  // Health score color
+  const scoreColor = score >= 70 ? '#10B981' : score >= 40 ? '#FBBF24' : '#EF4444';
+  const scoreLabel = score >= 70 ? 'Excellent' : score >= 40 ? 'Needs Improvement' : 'Poor';
+
+  await addMsg(`✅ ${userData.name}, I have completed your tax analysis! Here's your full summary:`, 'ai');
+
+  // Results card
+  const msgs = document.getElementById('chatMessages');
+  const row  = document.createElement('div');
+  row.className = 'msg-row';
+  const av = document.createElement('div');
+  av.className = 'msg-av ai'; av.textContent = '🤖';
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble ai';
+  bubble.style.maxWidth = '90%';
+
+  bubble.innerHTML = `
+    <div class="result-card">
+      <div class="result-row"><span>Gross Total Income</span><strong>${fmtINR(gross)}</strong></div>
+      <div class="result-row"><span>Total Deductions (Old)</span><strong class="green">-${fmtINR(ded)}</strong></div>
+      <div class="result-row"><span>Taxable Income</span><strong>${fmtINR(taxable)}</strong></div>
+      <div class="result-row"><span>Tax — Old Regime</span><strong class="red">${fmtINR(oldTax)}</strong></div>
+      <div class="result-row"><span>Tax — New Regime</span><strong class="red">${fmtINR(newTax)}</strong></div>
+      <div class="result-row"><span>✅ Best Regime for You</span><strong class="green">${better}</strong></div>
+      <div class="result-row"><span>💰 You Save</span><strong class="green">${fmtINR(saving)}</strong></div>
+      <div class="result-row"><span>📋 Recommended Form</span><strong class="gold">${itrRec.form}</strong></div>
+    </div>
+    <div style="margin-top:10px;font-size:12px;color:rgba(255,255,255,0.6);">ℹ️ ${itrRec.reason}</div>
+  `;
+
+  row.appendChild(av); row.appendChild(bubble);
+  msgs.appendChild(row);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  // Health Score
+  await new Promise(r => setTimeout(r, 600));
+
+  const hsRow = document.createElement('div');
+  hsRow.className = 'msg-row';
+  const hsAv = document.createElement('div');
+  hsAv.className = 'msg-av ai'; hsAv.textContent = '🤖';
+  const hsBubble = document.createElement('div');
+  hsBubble.className = 'msg-bubble ai';
+  hsBubble.style.maxWidth = '90%';
+  hsBubble.innerHTML = `
+    <strong>🏆 Your Tax Health Score</strong>
+    <div class="health-score-wrap" style="margin-top:12px;">
+      <div class="health-circle" style="color:${scoreColor};border-color:${scoreColor};background:${scoreColor}18;">
+        <div>${score}</div>
+        <div style="font-size:10px;font-weight:600;">/100</div>
+      </div>
+      <div class="score-label" style="color:${scoreColor};">${scoreLabel}</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:8px;">
+        ${score < 70 ? '💡 You can improve by maximizing 80C (₹1.5L), adding 80D health cover, and NPS contributions.' : '✅ Great job! Your tax planning is strong.'}
+      </div>
+    </div>
+  `;
+  hsRow.appendChild(hsAv); hsRow.appendChild(hsBubble);
+  msgs.appendChild(hsRow);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  // Tax saving suggestions
+  await new Promise(r => setTimeout(r, 700));
+  let suggestions = [];
+  if (userData.sec80c < 150000) suggestions.push('💼 Invest ₹' + fmtINR(150000 - userData.sec80c) + ' more in ELSS/PPF to fully use 80C');
+  if (userData.sec80d < 25000)  suggestions.push('🏥 Buy health insurance to claim up to ₹25,000 under 80D');
+  if (userData.nps === 0)        suggestions.push('📊 Start NPS to claim extra ₹50,000 deduction under 80CCD(1B)');
+  if (userData.homeLoan === 0)   suggestions.push('🏠 Home loan interest up to ₹2L is deductible under Sec 24b');
+
+  if (suggestions.length > 0) {
+    await addMsg('💡 <strong>Tax Saving Suggestions for you:</strong><br><br>' + suggestions.join('<br>'), 'ai');
+  }
+
+  // CTA
+  await new Promise(r => setTimeout(r, 600));
+  const ctaRow = document.createElement('div');
+  ctaRow.className = 'msg-row';
+  const ctaAv = document.createElement('div');
+  ctaAv.className = 'msg-av ai'; ctaAv.textContent = '🤖';
+  const ctaBubble = document.createElement('div');
+  ctaBubble.className = 'msg-bubble ai';
+  ctaBubble.style.maxWidth = '90%';
+  ctaBubble.innerHTML = `
+    <strong>📞 Ready to File?</strong><br><br>
+    For document verification and final ITR filing, connect with our CA expert now.<br><br>
+    <a class="chat-wa-btn" href="https://wa.me/917622093024?text=Hi! I completed the TaxAI Pro assessment. My name is ${encodeURIComponent(userData.name)}, income ₹${Math.round(gross/100000*10)/10}L, recommended form: ${itrRec.form}" target="_blank">
+      💬 Chat on WhatsApp with CA Expert
+    </a>
+    <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:8px;text-align:center;">Your data has been securely saved ✓</div>
+  `;
+  ctaRow.appendChild(ctaAv); ctaRow.appendChild(ctaBubble);
+  msgs.appendChild(ctaRow);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  await addMsg('⚠️ <em>Disclaimer: This is an estimate based on information provided. Final tax liability may vary after document review. Please consult our CA before filing.</em>', 'system', 500);
+}
+
+// ── Save lead to Google Sheets ──
+async function saveLead() {
+  const payload = {
+    timestamp:   new Date().toLocaleString('en-IN'),
+    name:        userData.name,
+    mobile:      userData.mobile,
+    email:       userData.email || 'Not provided',
+    city:        'Ahmedabad',
+    incomeType:  userData.incomeType,
+    estimatedTax: userData.estimatedTax,
+    itrForm:     userData.itrForm,
+    query:       'AI Chatbot',
+    grossIncome: getTotalIncome(),
+    healthScore: userData.taxHealthScore
+  };
+
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch(e) {
+    console.log('Lead save attempted:', payload);
+  }
+}
+
+// ── Also hook Contact Form to Google Sheets ──
+document.addEventListener('DOMContentLoaded', () => {
+  // Hook existing contact form submit button
+  const btns = document.querySelectorAll('.btn-primary');
+  btns.forEach(btn => {
+    if (btn.textContent.includes('Free Consultation')) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const form = btn.closest('.contact-form');
+        if (!form) return;
+
+        const inputs = form.querySelectorAll('input, select, textarea');
+        const data = {};
+        inputs.forEach(inp => {
+          if (inp.placeholder || inp.tagName === 'SELECT') {
+            data[inp.placeholder || inp.name || 'field'] = inp.value;
+          }
+        });
+
+        const payload = {
+          timestamp:   new Date().toLocaleString('en-IN'),
+          name:        data['Rahul Sharma'] || '',
+          mobile:      data['+91 98765 43210'] || '',
+          email:       data['rahul@example.com'] || '',
+          city:        'Ahmedabad',
+          incomeType:  data['field'] || '',
+          query:       data['Tell us about your income sources, specific queries...'] || 'Contact Form',
+          estimatedTax: '',
+          itrForm:     ''
+        };
+
+        fetch(SHEETS_URL, {
+          method: 'POST', mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+
+        // Show success feedback
+        btn.textContent = '✅ Request Received!';
+        btn.style.background = 'linear-gradient(135deg,#10B981,#059669)';
+        setTimeout(() => {
+          btn.textContent = '⚡ Get Free Consultation';
+          btn.style.background = '';
+        }, 3000);
+      });
+    }
+  });
+});
+</script>
+
+<!-- ══ GOOGLE SHEETS SETUP GUIDE (Hidden) ══
+To activate Google Sheets integration:
+
+1. Go to script.google.com
+2. Create new project, paste this code:
+
+function doPost(e) {
+  var sheet = SpreadsheetApp.openById('YOUR_SHEET_ID').getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+  sheet.appendRow([
+    data.timestamp, data.name, data.mobile, data.email,
+    data.city, data.incomeType, data.estimatedTax, data.itrForm,
+    data.query, data.grossIncome || '', data.healthScore || ''
+  ]);
+  return ContentService.createTextOutput('OK');
+}
+
+3. Deploy as Web App → Anyone can access
+4. Copy the URL and replace SHEETS_URL above
+══ END SETUP GUIDE ══ --></body>
+</html>
